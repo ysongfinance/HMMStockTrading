@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" id="jquery"></script>
+
+	
+<script type="text/javascript">
+      var delay = 5000;
+      var count = 10;
+      var showing = 5;
+      var i = 0;
+      function move(i) {
+        return function() {
+          $('#recent'+i).remove().css('display', 'none').prependTo('#items');
+        }
+      }
+      function shift() {
+        var toShow = (i + showing) % count;
+        $('#recent'+toShow).slideDown(1000, move(i));
+        $('#recent'+i).slideUp(1000, move(i));
+        i = (i + 1) % count;
+        setTimeout('shift()', delay);
+      }    
+      $(document).ready(function() {
+        setTimeout('shift()', delay);
+      });
+    </script>
+
+
+<title>1</title>
+</head>
+
+<body>
+<div id="items">
+<div style="display:none" id="recent9" class="item">
+1
+</div>
+
+<div style="display:none" id="recent8" class="item">
+2
+</div>
+
+<div style="display:none" id="recent7" class="item">
+3
+</div>
+
+<div style="display:none" id="recent6" class="item">
+4
+</div>
+
+<div style="display:none" id="recent5" class="item">
+5
+</div>
+
+<div style="display:block" id="recent4" class="item">
+6
+</div>
+
+<div style="display:block" id="recent3" class="item">
+7
+</div>
+
+<div style="display:block" id="recent2" class="item">
+8
+</div>
+
+<div style="display:block" id="recent1" class="item">
+9
+</div>
+
+<div style="display:block" id="recent0" class="item">
+10
+</div>
+
+</div>
+
+</body>
+
+</html>
